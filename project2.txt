@@ -1,0 +1,32 @@
+Author: Gengxing Wang
+
+q37 model: https://drive.google.com/file/d/1mNROaW9avXpFOhg6fhzsZCqrXtCVyeYR/view?usp=sharing
+q40 model: https://drive.google.com/file/d/1qPi138JsRM3zVh0nnu7sfbcfiOE-cOf6/view?usp=sharing
+
+Additional notes:
+1. The model takes around 8GB GPU memory to train, taking about 1500s per epoch to train on a single K80 instance. The testing should take similar amount of memory and less time
+2. You may adjust the following variables to test on additional datasets: q37_p, q40_p, src_p (paths of folders containing images), train_txt_p, val_txt_p (path of the text files), mode (‘q37’ or ‘q40’ depends on which dataset you are testing on)
+3. The code is currently testing all the validation set. If you wish the test the 4th image only, change “for idx in range(1, 8):” at line 268 of dataset.py to “for idx in range(4, 5):”.
+4. The only pre-processing it takes is divide the images by 255.0
+
+
+local testing statistics (average PSNR on 616 images, or 88 images if only testing on the 4th image):
+
+q40 and original labels: 32.207
+q37 and original labels: 31.450
+
+q37 model on q37 validation dataset: 33.019
+q37 model on q40 validation dataset: 33.720
+q40 model on q37 validation dataset: 32.355
+q40 model on q40 validation dataset: 35.061
+
+q37 model on q37(4th image only): 32.811
+q37 model on q40(4th image only): 33.809
+q40 model on q37(4th image only): 32.195
+q40 model on q40(4th image only): 35.153
+
+Please feel free to contact regarding any questions, thank you!
+
+Contact:
+Gengxing Wang
+gwan8849@uni.sydney.edu.au
